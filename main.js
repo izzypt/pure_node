@@ -21,7 +21,7 @@ let unifiedServer = (req, res) => {
     let decoder = new StringDecoder('utf-8');
     let buffer = ''
     //Data comes in chuncks by stream. Write them them to the buffer whenever data event is emitted.
-    req.on('data', (data) =>{
+    req.on('data', (data) => {
         buffer += decoder.write(data)
     })
     //When request ends, handle response accordingly.
