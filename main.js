@@ -34,6 +34,7 @@ let unifiedServer = (req, res) => {
             'headers': headers,
             'payload': helpers.parseJsonToObject(buffer)
         } 
+        //Define handler according to the user request
         let chosenHandler = router.hasOwnProperty(path) ? router[path] : handlers.notFound 
         chosenHandler(data, (statusCode, payload) => {
             statusCode = typeof(statusCode) == 'number' ? statusCode : 200;
@@ -54,7 +55,8 @@ let unifiedServer = (req, res) => {
 let router = {
 '/sample': handlers.sample,
 '/users': handlers.users,
-'/tokens': handlers.tokens
+'/tokens': handlers.tokens,
+'/checks' : handlers.checks
 }
 
 /************************/
